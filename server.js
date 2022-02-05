@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-// const { notes } = require('./db/db.json');
+const { notes } = require('./Develop/db/db.json');
 const res = require('express/lib/response');
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes')
+const apiRoutes = require('./Develop/routes/apiRoutes');
+const htmlRoutes = require('./Develop/routes/htmlRoutes')
 
 // insert routes here
 
