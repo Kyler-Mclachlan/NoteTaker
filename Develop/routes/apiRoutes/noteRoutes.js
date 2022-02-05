@@ -10,15 +10,10 @@ const { notes } = require('../../db/db.json');
 //   });
 
 router.post('/notes', (req, res) => {
-  // req.body.id = notes.length.toString();
-  // const newNote = saveNote(req.body, notes)
-  if (req.query) {;
-  // res.json(newNote);
-  res.console.log('recieved!');
-  }
-  else{
-    res.console.log('something went wrong with Post Request!')
-  }
+  // req.body is where our incoming content will be
+  console.log('post recieved!');
+  console.log(req.body);
+  res.json(req.body);
 });
 
 module.exports = router;
