@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const notes = require('./Develop/db/db.json');
+const notes = require('./db/db.json');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -14,9 +14,9 @@ app.use(express.json());
 
 function createNewNote(body, notesArray) {
     const note = body;
-    notesArray.push(note);
+    // notesArray.push(note);
     fs.writeFileSync(
-      path.join(__dirname, './Develop/db/db.json'),
+      path.join(__dirname, './db/db.json'),
       JSON.stringify({ notes : notesArray }, null, 2)
     );
     return note;
@@ -24,6 +24,13 @@ function createNewNote(body, notesArray) {
   
 
 // api routes
+
+app.get('/notes', (req, res) => {
+  // req.body is where our incoming content will be
+  console.log('post recieved!');
+  console.log(req.body);
+  res.json(notes);
+});
 
 app.post('/notes', (req, res) => {
     // req.body is where our incoming content will be
@@ -35,11 +42,11 @@ app.post('/notes', (req, res) => {
 
 // html routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './Develop/public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
   });
 
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
+  res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 // app.get('*', (req, res) => {
