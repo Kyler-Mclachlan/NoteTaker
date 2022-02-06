@@ -21,16 +21,21 @@ function createNewNote(body, notesArray) {
     );
     return note;
   }
+
+  function validateNotes(notes) {
+    if (!notes.title || typeof notes.title  !== 'string') {
+      return false;
+    }
+    if (!notes.text || typeof animal.species !== 'string') {
+      return false;
+    }
+    return true;
+  }
+
   
 
 // api routes
 
-app.get('/notes', (req, res) => {
-  // req.body is where our incoming content will be
-  console.log('post recieved!');
-  console.log(req.body);
-  res.json(notes);
-});
 
 app.post('/notes', (req, res) => {
     // req.body is where our incoming content will be
