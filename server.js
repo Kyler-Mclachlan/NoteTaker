@@ -41,6 +41,7 @@ function createNewNote(body, notesArray) {
 
 
 app.post('/api/notes', (req, res) => {
+  req.body.id = notes.length.toString();
     // req.body is where our incoming content will be
     console.log('post received!');
     const newNote = createNewNote(req.body, notes);
