@@ -53,6 +53,14 @@ app.get('/api/notes', (req, res) => {
   res.json(results);
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+  const { id } = req.params;
+  
+  const notesIndex = notes.findIndex(p => p.id == id);
+  notes.splice(notesIndex, 1);
+  res.send()
+})
+
 
 // html routes
 app.get('/', (req, res) => {
@@ -67,9 +75,9 @@ app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, './Develop/public/index.html'));
-//   });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+  });
   
 
 module.exports = app;  
