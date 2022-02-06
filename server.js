@@ -13,16 +13,16 @@ app.use(express.json());
 // functions
 
 function createNewNote(body, notesArray) {
-  console.log(body);
-  console.log(typeof notesArray);
-  return body;
-    // const note = body;
-    // notesArray.push(note);
-    // fs.writeFileSync(
-    //   path.join(__dirname, './db/db.json'),
-    //   JSON.stringify({ notes : notesArray }, null, 2)
-    // );
-    // return note;
+  // console.log(body);
+  // console.log(typeof notesArray);
+  // return body;
+  const note = body;
+  notesArray.push(note);
+  fs.writeFileSync(
+    path.join(__dirname, './db/db.json'),
+    JSON.stringify({ notes : notesArray }, null, 2)
+   );
+  return note;
   }
 
   function validateNotes(notes) {
